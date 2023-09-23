@@ -1,10 +1,7 @@
+'use client';
 import React from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
 
-interface Props {
-  mode: 'create' | 'edit';
-  data?: FieldType;
-}
 
 const onFinish = (values: any) => {
   console.log('Success:', values);
@@ -28,7 +25,7 @@ type FieldType = {
   InsurePhone?:Number;
 };
 
-const App: React.FC<Props> = ({mode, data}) => (
+const App: React.FC = () => (
   <Form
     name="basic"
     labelCol={{ span: 8 }}
@@ -125,7 +122,7 @@ const App: React.FC<Props> = ({mode, data}) => (
 
     <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
       <Button type="primary" htmlType="submit">
-        {mode === 'create' ? 'Create' : 'Save'} {/* Change button text based on mode */}
+        update
       </Button>
     </Form.Item>
   </Form>
