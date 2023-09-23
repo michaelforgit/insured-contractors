@@ -35,29 +35,88 @@ const App: React.FC = () => (
     autoComplete="off"
   >
     <Form.Item<FieldType>
-      label="Username"
-      name="username"
-      rules={[{ required: true, message: 'Please input your username!' }]}
+      label="FirstName"
+      name="FirstName"
+      rules={[{ required: true, message: 'Please input your First Name: ' }]}
+    >
+      <Input />
+    </Form.Item>
+
+
+    <Form.Item<FieldType>
+      label="LastName"
+      name="LastName"
+      rules={[{ required: true, message: 'Please input your password: ' }]}
+    >
+      <Input />
+    </Form.Item>
+  
+
+    <Form.Item<FieldType>
+      label="CompanyEmail"
+      name="CompanyEmail"
+      rules={[{ required: true, message: 'Please input your CompanyEmail: ' }]}
     >
       <Input />
     </Form.Item>
 
     <Form.Item<FieldType>
-      label="Password"
-      name="password"
-      rules={[{ required: true, message: 'Please input your password!' }]}
+      label="CompanyName"
+      name="CompanyName"
+      rules={[{ required: true, message: 'Please input your CompanyName: ' }]}
     >
-      <Input.Password />
+      <Input />
     </Form.Item>
 
     <Form.Item<FieldType>
-      name="remember"
-      valuePropName="checked"
-      wrapperCol={{ offset: 8, span: 16 }}
+      label="CompanyAddress"
+      name="CompanyAddress"
+      rules={[{ required: true, message: 'Please input your CompanyAddress: ' }]}
     >
-      <Checkbox>Remember me</Checkbox>
+      <Input />
     </Form.Item>
 
+    <Form.Item<FieldType>
+      label="City"
+      name="City"
+      rules={[{ required: true, message: 'Please input your City: ' }]}
+    >
+      <Input />
+    </Form.Item>
+
+    <Form.Item<FieldType>
+      label="State"
+      name="State"
+      rules={[{ required: true, message: 'Please input your State: ' }]}
+    >
+      <Input />
+    </Form.Item>
+
+    <Form.Item<FieldType>
+      label="InsureName"
+      name="InsureName"
+      rules={[{ required: true, message: 'Please input your InsureName: ' }]}
+    >
+      <Input />
+    </Form.Item>
+
+
+    <Form.Item<FieldType>
+      label="InsureEmail"
+      name="InsureEmail"
+      rules={[{ required: true, message: 'Please input your Insurers Email: ' }]}
+    >
+      <Input />
+    </Form.Item>
+
+    <Form.Item<FieldType>
+      label="InsurePhone"
+      name="InsurePhone"
+      rules={[{ required: true, message: 'Please input your Insurers Phone Number: ' }]}
+    >
+      <Input />
+    </Form.Item>
+        
     <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
       <Button type="primary" htmlType="submit">
         Submit
