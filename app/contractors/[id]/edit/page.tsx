@@ -10,7 +10,7 @@ import {
 
 const App = () => {
   return (
-    <Card color="transparent" shadow={false}> 
+    <div className="grid justify-center">
       <div color="gray" className="mt-1 font-normal">
         Contractor Registration
       </div>
@@ -33,7 +33,7 @@ const App = () => {
           Submit
         </Button>
       </form>
-    </Card>
+    </div>
   );
 }
 
