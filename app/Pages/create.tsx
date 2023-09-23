@@ -12,8 +12,15 @@ const onFinishFailed = (errorInfo: any) => {
 type FieldType = {
   FirstName?: string;
   LastName?: string;
+  CompanyEmail?: string;
   CompanyName?: string;
+  CompanyAddress?: string;
   City?:string;
+  State?:string;
+  ZipCode?:Number;
+  InsureName?:string;
+  InsureEmail?:string;
+  InsurePhone?:Number;
 };
 
 const App: React.FC = () => (
