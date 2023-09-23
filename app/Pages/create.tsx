@@ -1,6 +1,11 @@
 import React from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
 
+interface Props {
+  mode: 'create' | 'edit';
+  data?: FieldType;
+}
+
 const onFinish = (values: any) => {
   console.log('Success:', values);
 };
@@ -23,7 +28,7 @@ type FieldType = {
   InsurePhone?:Number;
 };
 
-const App: React.FC = () => (
+const App: React.FC<Props> = ({mode, data}) => (
   <Form
     name="basic"
     labelCol={{ span: 8 }}
@@ -117,10 +122,10 @@ const App: React.FC = () => (
       <Input />
     </Form.Item>
     
-    
+
     <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
       <Button type="primary" htmlType="submit">
-        Submit
+        {mode === 'create' ? 'Create' : 'Save'} {/* Change button text based on mode */}
       </Button>
     </Form.Item>
   </Form>
