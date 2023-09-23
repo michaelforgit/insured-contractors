@@ -1,6 +1,6 @@
-import { Col, Row } from 'antd';
+import { Col, Row, Button } from 'antd';
 import Image from 'next/image';
-
+import Tag from './tag'
 type Props = {
     name: String;
     phone: String;
@@ -9,17 +9,21 @@ type Props = {
 export default function Card( {name, phone}: Props) {
     return(
         <>
-            <Col span={24} lg={8} >
-                <div className="border-black border-2 rounded-md p-3">
-                    <Row justify={'center'}>
-                        <Image src="/deckimage.jpg" alt="Deck Image" width={100} height={100}/>
-                    </Row>
-                    <Row><p className="text-black truncate">{name}</p></Row>
-                    <Row><p className="text-black truncate">Lake Elmo, MN</p></Row>
-                    <Row><p className="text-black truncate">{phone}</p></Row>
-                    <Row><p className="text-black truncate">jeff@gmail.com</p></Row>
-                    <Row><p className="text-black truncate">Google Stars Here</p></Row>
-
+            <Col span={24} lg={7} >
+                <div className="rounded-md p-3 space-y-2 bg-white">
+                    <div className="justify-center h-40 w-full">
+                        <Image src="/deckimage.jpg" alt="Deck Image" height={160} width={284} style={{objectFit: 'contain'}}/>
+                    </div>
+                    <Tag text="Deck Build"/>
+                    <Tag text="Deck Test"/>
+                    <Tag text="Deck Test"/>
+                    <Tag text="Deck Test"/>
+                    <p className="text-black truncate">{name}</p>
+                    <p className="text-black truncate">Lake Elmo, MN</p>
+                    <p className="text-black truncate">{phone}</p>
+                    <p className="text-black truncate">jeff@gmail.com</p>
+                    <Button className="text-black truncate">Insurer Info</Button>
+                    <p className="text-black truncate">Google Stars Here</p>
                 </div>
             </Col>
         </>
