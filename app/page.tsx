@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Card from './components/card'
 export default function Home() {
   return (
-    <main className="flex min-h-screen p-8 md:px-60 bg-[#f2f2f7]">
+    <main className="flex min-h-screen p-8 md:px-48 bg-[#f2f2f7]">
       <div className="w-full">
         <div className="grid grid-cols-3 gap-4">
           <Card name="Marnath Testffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff" phone="651-222-4433"/>
