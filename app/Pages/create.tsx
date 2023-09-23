@@ -10,9 +10,10 @@ const onFinishFailed = (errorInfo: any) => {
 };
 
 type FieldType = {
-  username?: string;
-  password?: string;
-  remember?: string;
+  FirstName?: string;
+  LastName?: string;
+  CompanyName?: string;
+  City?:string;
 };
 
 const App: React.FC = () => (
