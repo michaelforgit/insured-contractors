@@ -1,29 +1,39 @@
 import Image from 'next/image';
 import Tag from './tag'
 type Props = {
-    name: String;
-    phone: String;
+    id: string;
+    company: string;
+    locationId: string;
+    email: string;
+    phoneNumber: string;
+    city: string;
+    state: string;
+    zip: string;
+    insuranceName: string;
+    insurancePhone: string;
+    insuranceEmail: string;
 }
 
-export default function Card( {name, phone}: Props) {
+export default function Card( {id, company, locationId, email, phoneNumber, city, state, zip, insuranceName, insurancePhone, insuranceEmail}: Props) {
     return(
         <>
-                <div className="rounded-md pb-3 space-y-2 bg-white">
-                        {/* <Image src="/deckimage.jpg" alt="Deck Image" height={160} width={284} style={{objectFit: 'contain'}}/> */}
+                <div className="col-span-3 lg:col-span-1 rounded-md pb-3 space-y-2 bg-white">
                     <img src="/deckimage.jpg" alt="Deck Image" className="w-full object-cover rounded-md" />
-                    <div className="px-3">
-                        <Tag text="Deck Build"/>
-                        <Tag text="Deck Test"/>
-                        <Tag text="Deck Test"/>
-                        <Tag text="Deck Test"/>
-                        <p className="text-black truncate">{name}</p>
-                        <p className="text-black truncate">Lake Elmo, MN</p>
-                        <div className="grid grid-cols-2 gap-7">
-                            <div className="col-span-1">
-                                <p className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded text-center">Contact Info</p>
+                    <div className="px-3 space-y-4">
+                        <div className="flex flex-nowrap">
+                            <Tag text="Deck Build"/>
+                            <Tag text="Deck Test"/>
+                            <Tag text="Deck Test"/>
+                            <Tag text="Deck Test"/>
+                        </div>
+                        <p className="text-black truncate">{company}</p>
+                        <p className="text-black truncate">{city}, {state}</p>
+                        <div className="grid grid-cols-2">
+                            <div className="col-span-1 p-3">
+                                <p className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded text-center">Contact</p>
                             </div>
-                            <div className="col-span-1">
-                                <p className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded text-center">Check Insurer</p>
+                            <div className="col-span-1 p-3">
+                                <p className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded text-center">Insurer</p>
                             </div>
                         </div>
                         <p className="text-black truncate">Google Stars Here</p>
