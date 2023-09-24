@@ -61,8 +61,8 @@ export default function Card( {id, company, locationId, email, phoneNumber, city
                                 triggerText="Insurer"
                                 content={
                                     <div className="p-4">
-                                        <p className="text-black font-mono">{insuranceName}</p>
-                                        <p className="text-black font-mono">{insurancePhone}</p>
+                                        <p className="text-black">{insuranceName}</p>
+                                        <p className="text-black">{insurancePhone}</p>
                                     </div>
                                 }
                                 />
