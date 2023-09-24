@@ -1,15 +1,6 @@
 import React from 'react';
 import clientPromise from '../../lib/mongodb'
 
-import {
-  Card,
-  Input,
-  Checkbox,
-  Button,
-  Typography,
-} from "@material-tailwind/react";
-
-
 const contractorServices = [
   "Plumbing",
   "Electrical",
@@ -173,7 +164,7 @@ export default async function Create() {
               style={{ padding: "0.375rem 0.75rem", minHeight: "3rem" }}
             >
               {contractorServices.map((service) => (
-                <option value={service}>{service}</option>
+                <option key={service} value={service}>{service}</option>
               ))}
             </select>
           </div>
