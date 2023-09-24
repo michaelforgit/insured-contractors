@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Tag from './tag'
+
 type Props = {
     id: string;
     company: string;
@@ -16,7 +17,7 @@ type Props = {
 
 export default function Card( {id, company, locationId, email, phoneNumber, city, state, zip, insuranceName, insurancePhone, insuranceEmail}: Props) {
     
-    const rating = 5;
+    const rating = 2;
 
     const fullStars = Array.from({length: rating}, (_, index) => (
         <svg key={index} className="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
@@ -35,7 +36,7 @@ export default function Card( {id, company, locationId, email, phoneNumber, city
                 <div className="col-span-3 md:col-span-1 rounded-md pb-3 space-y-2 bg-white">
                     <img src="/deckimage.jpg" alt="Deck Image" className="w-full object-cover rounded-md" />
                     <div className="px-3 space-y-2">
-                        <div className="flex flex-wrap justify-center">
+                        <div className="flex flex-wrap justify-start">
                             <Tag text="Deck Build"/>
                             <Tag text="Deck Test"/>
                             <Tag text="Deck Test"/>

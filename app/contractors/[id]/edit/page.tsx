@@ -1,13 +1,4 @@
 import React from 'react';
-import clientPromise from '../../../lib/mongodb'
-import {
-  Card,
-  Input,
-  Checkbox,
-  Button,
-  Typography,
-} from "@material-tailwind/react";
-
 
 const App = () => {
   return (
