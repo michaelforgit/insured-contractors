@@ -21,12 +21,12 @@ const Popover: React.FC<PopoverProps> = ({ triggerText, content }) => {
   }
 
   return (
-    <div className="col-span-1">
+    <div className="col-span-1 w-full justify-items-center py-2">
       <button
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseExit}
         type="button"
-        className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded text-center text-xs md:text-sm"
+        className="mx-auto grid w-3/4 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded text-center text-xs md:text-sm"
       >
         {triggerText}
       </button>
