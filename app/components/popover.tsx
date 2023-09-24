@@ -32,7 +32,7 @@ const Popover: React.FC<PopoverProps> = ({ triggerText, content }) => {
       </button>
 
       {isOpen && (
-        <div className="origin-top-right absolute mt-2 w-max bg-white border border-gray-200 divide-y divide-gray-100 rounded-lg shadow-lg">
+        <div className="origin-top-right absolute mt-2 w-max bg-white border border-gray-200 divide-y divide-gray-100 rounded-lg shadow-lg z-50">
           <div className="py-1">
             {content}
           </div>
