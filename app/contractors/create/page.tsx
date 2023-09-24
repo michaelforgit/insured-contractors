@@ -174,11 +174,11 @@ export default function Create() {
   };
 
   return (
-    <div className="grid justify-center  text-black truncate bg-white p-4" >
-      <div color="gray" className="mt-6 font-normal text-3xl mb-px[10px] py-6">
+    <div className="grid justify-center text-black truncate p-4 mb-8" >
+      <div color="gray" className="mt-6 font-normal text-3xl">
         Contractor Registration
       </div>
-      <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96" onSubmit={handleSubmit}>
+      <form className="w-80 max-w-screen-lg sm:w-96" onSubmit={handleSubmit}>
         <div className="mb-4 flex flex-col gap-6 pt-6 text-black truncate">
           <div>
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="company">
