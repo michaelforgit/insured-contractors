@@ -41,7 +41,6 @@ export default async function Home() {
   } catch (error) {
     console.log(error)
   }
-
   return (
     <main className="flex min-h-screen p-8 lg:px-48 bg-[#f2f2f7]">
       <div className="w-full">
@@ -54,3 +53,4 @@ export default async function Home() {
     </main>
   )
 }
+
