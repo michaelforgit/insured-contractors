@@ -18,7 +18,7 @@ type contractorInformation = {
 }
 
 export default async function Home() {
-
+  
   let contractors: contractorInformation[] = []
 
   try {
@@ -43,7 +43,7 @@ export default async function Home() {
   }
 
   return (
-    <main className="flex min-h-screen p-8 md:px-48 bg-[#f2f2f7]">
+    <main className="flex min-h-screen p-8 lg:px-48 bg-[#f2f2f7]">
       <div className="w-full">
         <div className="grid grid-cols-3 gap-4">
           { contractors.map( (contractor) => (
