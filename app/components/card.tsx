@@ -43,6 +43,10 @@ export default function Card( {id, company, locationId, email, phoneNumber, city
                         </div>
                         <p className="text-black truncate">{company}</p>
                         <p className="text-black truncate">{city}, {state}</p>
+                        <div className="flex items-center space-x-1 justify-center" >
+                            { fullStars }
+                            { emptyStars }
+                        </div>
                         <div className="grid grid-cols-2">
                             <div className="col-span-1 p-3">
                                 <p className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded text-center text-xs md:text-sm">Contact</p>
@@ -50,10 +54,6 @@ export default function Card( {id, company, locationId, email, phoneNumber, city
                             <div className="col-span-1 p-3">
                                 <p className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded text-center text-xs md:text-sm">Insurer</p>
                             </div>
-                        </div>
-                        <div className="flex items-center space-x-1 justify-center" >
-                            { fullStars }
-                            { emptyStars }
                         </div>
                     </div>
                 </div>

@@ -1,12 +1,7 @@
-import React from 'react';
-import clientPromise from '../../lib/mongodb'
-import {
-  Card,
-  Input,
-  Checkbox,
-  Button,
-  Typography,
-} from "@material-tailwind/react";
+"use client"
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation'
+
 const contractorServices = [
   "Plumbing",
   "Electrical",
@@ -136,65 +131,78 @@ type contractorInformation = {
   insuranceEmail: string;
 }
 
-export default async function Create() {
-  const testDoc = {
-    id: "99000909090",
-    company: "BM Toe Truck",
-    locationId: "1234567890",
-    email: "blahblah@gmail.com",
-    phoneNumber: "1234567890",
-    city: "San Francisco",
-    state: "CA",
-    zip: "94103",
-    insuranceName: "Geico",
-    insurancePhone: "1234567890",
-    insuranceEmail: "support@geico.com",
+export default function Create() {
+
+  const [companyValue, setCompanyValue] = useState("Default");
+  const [locationIdValue, setLocationIdValue] = useState("Default");
+  const [emailValue, setEmailValue] = useState("Default");
+  const [phoneNumberValue, setPhoneNumberValue] = useState("Default");
+  const [cityValue, setCityValue] = useState("Default");
+  const [stateValue, setStateValue] = useState("Default");
+  const [zipValue, setZipValue] = useState("Default");
+  const [insuranceNameValue, setInsuranceNameValue] = useState("Default");
+  const [insurancePhoneValue, setInsurancePhoneValue] = useState("Default");
+  const [insuranceEmailValue, setInsuranceEmailValue] = useState("Default");
+
+  const router = useRouter();
+  
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+
+    const formData = {
+      company: companyValue,
+      locationId: locationIdValue,
+      email: emailValue,
+      phoneNumber: phoneNumberValue,
+      city: cityValue,
+      state: stateValue,
+      zip: zipValue,
+      insuranceName: insuranceNameValue,
+      insurancePhone: insurancePhoneValue,
+      insuranceEmail: insuranceEmailValue,
+    };
+
+    const response = fetch('../api', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    });
+    console.log("should be redirecting...")
+    router.push('/')
   };
-
-
- try {
-    const client = await clientPromise;
-    const db = await client.db("insured-contractors");
-  } catch (error) {
-    console.log(error)
-  }
-  //dummy data
-
 
   return (
     <div className="grid justify-center  text-black truncate bg-white p-4" >
       <div color="gray" className="mt-6 font-normal text-3xl mb-px[10px] py-6">
         Contractor Registration
       </div>
-      <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
+      <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96" onSubmit={handleSubmit}>
         <div className="mb-4 flex flex-col gap-6 pt-6 text-black truncate">
           <div>
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="company">
               Company Name
             </label>
-            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="Company" type="text"/>
+            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="Company" type="text" onChange={(e) => setCompanyValue(e.target.value)}/>
           </div>
           <div>
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="locationId">
               Location ID
             </label>
-            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="locationId" type="text"/>
+            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="locationId" type="text" onChange={(e) => setLocationIdValue(e.target.value)}/>
           </div>
           <div>
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
               Email
             </label>
-            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text"/>
+            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" onChange={(e) => setEmailValue(e.target.value)}/>
           </div>
           <div>
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="city">
             City
           </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="city"
-            type="text"
-          />
+          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="city" type="text" onChange={(e) => setCityValue(e.target.value)}/>
         </div>
 
         <div>
@@ -203,8 +211,7 @@ export default async function Create() {
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="state"
-            type="text"
+            id="state" type="text" onChange={(e) => setStateValue(e.target.value)}
           />
         </div>
 
@@ -216,6 +223,7 @@ export default async function Create() {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="zip"
             type="text"
+            onChange={(e) => setZipValue(e.target.value)}
           />
         </div>
 
@@ -227,6 +235,7 @@ export default async function Create() {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="insuranceName"
             type="text"
+            onChange={(e) => setInsuranceNameValue(e.target.value)}
           />
         </div>
 
@@ -238,6 +247,7 @@ export default async function Create() {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="insurancePhone"
             type="text"
+            onChange={(e) => setInsurancePhoneValue(e.target.value)}
           />
         </div>
 
@@ -249,6 +259,7 @@ export default async function Create() {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="insuranceEmail"
             type="text"
+            onChange={(e) => setInsuranceEmailValue(e.target.value)}
           />
         </div>
       </div>
@@ -274,9 +285,9 @@ export default async function Create() {
           </div>
         </div>
         
-        <button 
-          className="w-full mt-8 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-        > Submit </button>
+        <button className="w-full mt-8 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600" value="Submit">
+          Submit 
+        </button>
         
       </form>
     </div>
