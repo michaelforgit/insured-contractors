@@ -2,6 +2,8 @@
 
 Submitted by: **Micheal O`Gorman, Marnath Deng, Beteab Tefera, Dan Beletsky**
 
+![Screen shot of the application](https://i.imgur.com/5W0j02X.png)
+
 This web app: **Insured Contractors is the ideal platform for both contractors and customers. Contractors can showcase their services and insurance credentials, while customers can easily find and hire trusted professionals. Whether you're a contractor looking to expand your clientele or a customer seeking peace of mind, Insured Contractors has you covered.**
 
 ## User-Friendly Interface
