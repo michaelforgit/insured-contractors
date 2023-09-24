@@ -143,12 +143,13 @@ export default function Create() {
   const [insuranceNameValue, setInsuranceNameValue] = useState("Default");
   const [insurancePhoneValue, setInsurancePhoneValue] = useState("Default");
   const [insuranceEmailValue, setInsuranceEmailValue] = useState("Default");
-
+  const [imageUrlValue, setImageUrlValue] = useState("https://thumbor.forbes.com/thumbor/fit-in/x/https://www.forbes.com/home-improvement/wp-content/uploads/2022/03/featured-image-contractors.jpeg.jpg");
+  const [jobsValue, setJobsValue] = useState<string[]>([]);
   const router = useRouter();
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-
+    console.log(e)
     const formData = {
       company: companyValue,
       locationId: locationIdValue,
@@ -160,6 +161,8 @@ export default function Create() {
       insuranceName: insuranceNameValue,
       insurancePhone: insurancePhoneValue,
       insuranceEmail: insuranceEmailValue,
+      jobs: jobsValue,
+      imageUrl: imageUrlValue
     };
 
     const response = fetch('api', {
@@ -232,7 +235,17 @@ export default function Create() {
             onChange={(e) => setZipValue(e.target.value)}
           />
         </div>
-
+        <div>
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="zip">
+            Image URL
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="zip"
+            type="text"
+            onChange={(e) => setImageUrlValue(e.target.value)}
+          />
+        </div>
         <div>
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="insuranceName">
             Insurance Name
@@ -274,7 +287,7 @@ export default function Create() {
           <label className="inline-block text-sm text-gray-600" htmlFor="Multiselect">
             Which Services do you provide?
           </label>
-          <div className="add tailwind css">
+          <div>
             <select
               id="select-service"
               name="service[]"
@@ -283,6 +296,10 @@ export default function Create() {
               autoComplete="off"
               className="block w-full rounded-sm cursor-pointer focus:outline-none"
               style={{ padding: "0.375rem 0.75rem", minHeight: "3rem" }}
+              onChange = {(e) => {
+                const selectedOptions = Array.from(e.target.selectedOptions, option => option.value);
+                setJobsValue(selectedOptions); }
+              }
             >
               {contractorServices.map((service) => (
                 <option key={service} value={service}>{service}</option>

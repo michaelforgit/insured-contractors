@@ -7,7 +7,7 @@ export async function POST(request: Request) {
     const db = client.db("insured-contractors");
     const requestData = await request.json();
     console.log(requestData)
-    const { company, locationId, email, phoneNumber, city, state, zip, insuranceName, insurancePhone, insuranceEmail } = requestData;
+    const { company, locationId, email, phoneNumber, city, state, zip, insuranceName, insurancePhone, insuranceEmail, jobs } = requestData;
 
     const post = await db.collection("contractors").insertOne(
       {
@@ -20,7 +20,8 @@ export async function POST(request: Request) {
         zip,
         insuranceName,
         insurancePhone,
-        insuranceEmail
+        insuranceEmail,
+        jobs
       }
     );
     return NextResponse.json( { message: 'SUCCESS!!!' } )

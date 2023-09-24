@@ -15,6 +15,8 @@ type contractorInformation = {
   insuranceName: string;
   insurancePhone: string;
   insuranceEmail: string;
+  jobs: string[];
+  imageUrl: string;
 }
 
 export default async function Home() {
@@ -36,7 +38,9 @@ export default async function Home() {
       zip: contractor.zip, 
       insuranceName: contractor.insuranceName,
       insurancePhone: contractor.insurancePhone,
-      insuranceEmail: contractor.insuranceEmail
+      insuranceEmail: contractor.insuranceEmail,
+      jobs: contractor.jobs,
+      imageUrl: contractor.imageUrl
     } ) )
   } catch (error) {
     console.log(error)
@@ -65,7 +69,7 @@ export default async function Home() {
 
         <div className="grid grid-cols-3 gap-4">
           { contractors.map( (contractor) => (
-            <Card key = {contractor.id} id = {contractor.id} company = {contractor.company} locationId = {contractor.locationId} email = {contractor.email} phoneNumber = {contractor.phoneNumber} city = {contractor.city} state = {contractor.state} zip = {contractor.zip} insuranceName = {contractor.insuranceName} insurancePhone = {contractor.insurancePhone} insuranceEmail = {contractor.insuranceEmail}  />
+            <Card key = {contractor.id} id = {contractor.id} company = {contractor.company} locationId = {contractor.locationId} email = {contractor.email} phoneNumber = {contractor.phoneNumber} city = {contractor.city} state = {contractor.state} zip = {contractor.zip} insuranceName = {contractor.insuranceName} insurancePhone = {contractor.insurancePhone} insuranceEmail = {contractor.insuranceEmail} jobs = {contractor.jobs} imageUrl = {contractor.imageUrl}  />
           ) ) }
         </div>
       </div>
