@@ -1,11 +1,12 @@
 import { NextResponse } from 'next/server'
-import clientPromise from "../lib/mongodb";
+import clientPromise from "../../lib/mongodb";
 
 export async function POST(request: Request) {
   try {
     const client = await clientPromise;
     const db = client.db("insured-contractors");
     const requestData = await request.json();
+    console.log(requestData)
     const { company, locationId, email, phoneNumber, city, state, zip, insuranceName, insurancePhone, insuranceEmail } = requestData;
 
     const post = await db.collection("contractors").insertOne(

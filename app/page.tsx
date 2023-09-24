@@ -2,7 +2,6 @@ import Image from 'next/image'
 import Card from './components/card'
 import clientPromise from './lib/mongodb'
 
-
 type contractorInformation = {
   id: string;
   company: string;

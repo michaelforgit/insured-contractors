@@ -145,7 +145,7 @@ export default function Create() {
   const [insuranceEmailValue, setInsuranceEmailValue] = useState("Default");
 
   const router = useRouter();
-  
+
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
@@ -162,7 +162,7 @@ export default function Create() {
       insuranceEmail: insuranceEmailValue,
     };
 
-    const response = fetch('../api', {
+    const response = fetch('api', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -184,7 +184,7 @@ export default function Create() {
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="company">
               Company Name
             </label>
-            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="Company" type="text" onChange={(e) => setCompanyValue(e.target.value)}/>
+            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="Company" type="text" value={companyValue} onChange={(e) => setCompanyValue(e.target.value)}/>
           </div>
           <div>
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="locationId">
