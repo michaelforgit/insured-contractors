@@ -184,7 +184,7 @@ export default function Create() {
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="company">
               Company Name
             </label>
-            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="Company" type="text" value={companyValue} onChange={(e) => setCompanyValue(e.target.value)}/>
+            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="Company" type="text" onChange={(e) => setCompanyValue(e.target.value)}/>
           </div>
           <div>
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="locationId">
@@ -197,6 +197,12 @@ export default function Create() {
               Email
             </label>
             <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" onChange={(e) => setEmailValue(e.target.value)}/>
+          </div>
+          <div>
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phoneNumber">
+              Phone Number
+            </label>
+            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phoneNumber" type="text" onChange={(e) => setPhoneNumberValue(e.target.value)}/>
           </div>
           <div>
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="city">
