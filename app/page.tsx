@@ -41,10 +41,9 @@ export default async function Home() {
   } catch (error) {
     console.log(error)
   }
-
   return (
     <main className="flex min-h-screen bg-[#f2f2f7]">
-      <div className="w-full justify-center p-8 lg:px-48">
+      <div className="w-full justify-center p-8 lg:px-48 mb-20">
       <div className="grid grid-cols-2 justify-items-center">
         <img src="InsuredContractors.png" className="col-span-2 lg:top-5 lg:left-5 lg:absolute h-16"/>
         <form className="col-span-2 mx-auto grid mb-6 mt-6 lg:mt-0 w-full md:w-3/5">
@@ -73,3 +72,4 @@ export default async function Home() {
     </main>
   )
 }
+

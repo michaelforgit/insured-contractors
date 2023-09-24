@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Tag from './tag'
+import Popover from './popover'
 
 type Props = {
     id: string;
@@ -16,6 +17,7 @@ type Props = {
     insurancePhone: string;
     insuranceEmail: string;
 }
+
 
 export default function Card( {id, company, locationId, email, phoneNumber, city, state, zip, insuranceName, insurancePhone, insuranceEmail}: Props) {
     
@@ -51,7 +53,7 @@ export default function Card( {id, company, locationId, email, phoneNumber, city
     
     return(
         <>
-                <div className="col-span-3 md:col-span-1 rounded-md pb-3 space-y-2 bg-white">
+                <div className="col-span-3 md:col-span-1 rounded-md pb-3 space-y-2 bg-white ">
                     <img src="/deckimage.jpg" alt="Deck Image" className="w-full object-cover rounded-md" />
                     <div className="px-3 space-y-2">
                         <div className="flex flex-wrap justify-start">
@@ -62,17 +64,38 @@ export default function Card( {id, company, locationId, email, phoneNumber, city
                         </div>
                         <p className="text-black truncate">{company}</p>
                         <p className="text-black truncate">{city}, {state}</p>
+                        
                         <div className="flex items-center space-x-1 justify-center" >
                             { fullStars }
                             { emptyStars }
                         </div>
-                        <div className="grid grid-cols-2">
+                        {/* <div className="grid grid-cols-2">
                             <div className="col-span-1 p-3">
                                 <p className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded text-center text-xs md:text-sm">Contact</p>
                             </div>
                             <div className="col-span-1 p-3">
                                 <p className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded text-center text-xs md:text-sm">Insurer</p>
                             </div>
+                        </div> */}
+                        <div className="grid grid-cols-2 justify-items-center">
+                            <Popover
+                            triggerText="Contact"
+                            content={
+                                <div className="p-4">
+                                    <p className="text-black">{email}</p>
+                                    <p className="text-black">{phoneNumber}</p>
+                                </div>
+                            }
+                            />
+                            <Popover
+                            triggerText="Insurer"
+                            content={
+                                <div className="p-4">
+                                    <p className="text-black font-mono">{insuranceName}</p>
+                                    <p className="text-black font-mono">{insurancePhone}</p>
+                                </div>
+                            }
+                            />
                         </div>
                     </div>
                 </div>
