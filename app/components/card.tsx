@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react';
+import { FaPencilAlt } from 'react-icons/fa';
 import Image from 'next/image';
 import Tag from './tag'
 import Popover from './popover'
@@ -56,7 +57,10 @@ export default function Card( {id, company, locationId, email, phoneNumber, city
     return(
         <>
                 <div className="col-span-3 md:col-span-1 rounded-md pb-3 space-y-2 bg-white ">
-                    <img src={imageUrl} alt="Deck Image" className="w-full object-cover rounded-md h-[125px]" />
+                    <div className="relative">
+                        <div className="absolute right-2 top-2 h-7 w-7 opacity-0 hover:opacity-100 hover:text-black"> <a href={`/contractors/${id}/edit`}><FaPencilAlt className="w-full h-full"/></a></div>
+                        <img src={imageUrl} alt="Deck Image" className="w-full object-cover rounded-md h-[125px]" />
+                    </div>
                     <div className="px-3 space-y-2">
                         <div className="flex flex-wrap justify-start">
                             { jobs?.map( (job, index) => (
