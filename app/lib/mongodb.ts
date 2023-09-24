@@ -4,7 +4,7 @@ if (!process.env.NEXT_PUBLIC_MONGODB_URI) {
   throw new Error('Invalid/Missing environment variable: "MONGODB_URI"')
 }
 
-const uri = process.env.MONGODB_URI
+const uri = process.env.NEXT_PUBLIC_MONGODB_URI as string;
 const options = {}
 
 let client
