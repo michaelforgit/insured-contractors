@@ -1,5 +1,5 @@
-'use client';
 import React from 'react';
+import clientPromise from '../../../lib/mongodb'
 import {
   Card,
   Input,
@@ -12,26 +12,96 @@ import {
 const App = () => {
   return (
     <div className="grid justify-center  text-black truncate bg-white p-4" >
-      <div color="gray" className="mt-6 font-normal text-3xl mb-px[10px] py-6">
-        Contractor Registration
-      </div>
       <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
-        <div className="mb-4 flex flex-col gap-6 pt-6 text-black truncate">
-          <Input size="lg" label="Company Name" crossOrigin="anonymous " className="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"/>     
-          <Input size="lg" label="Company Email" crossOrigin="anonymous" className='peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50'/>
-          <Input size="lg" label="Company Phone" crossOrigin="anonymous" className='peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50'/>
-          <Input size="lg" label="Location ID" crossOrigin="anonymous" className='peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50' />
-          <Input size="lg" label="City" crossOrigin="anonymous" className='peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50'/>
-          <Input size="lg" label="State" crossOrigin="anonymous" className='peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50'/>
-          <Input size="lg" label="Zipcode" crossOrigin="anonymous" className='peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50'/>
-          <Input size="lg" label="Insurance Name" crossOrigin="anonymous" className='peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50'/>
-          <Input size="lg" label="Insurance Email" crossOrigin="anonymous" className='peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50'/>
-          <Input size="lg" label="Insurance Phone" crossOrigin="anonymous" className='peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50'/>
+      <div className="mb-4 flex flex-col gap-6 pt-6 text-black truncate">
+          <div>
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="company">
+              Company Name
+            </label>
+            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="Company" type="text" placeholder="Company"/>
+          </div>
+          <div>
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+              Email
+            </label>
+            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="email"/>
+          </div>
+          <div>
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="city">
+            City
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="city"
+            type="text"
+            placeholder="City"
+          />
         </div>
-        
-        <Button className="mt-8 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600" fullWidth>
-          Edit
-        </Button>
+
+        <div>
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="state">
+            State
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="state"
+            type="text"
+            placeholder="State"
+          />
+        </div>
+
+        <div>
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="zip">
+            Zip Code
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="zip"
+            type="text"
+            placeholder="Zip Code"
+          />
+        </div>
+
+        <div>
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="insuranceName">
+            Insurance Name
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="insuranceName"
+            type="text"
+            placeholder="Insurance Name"
+          />
+        </div>
+
+        <div>
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="insurancePhone">
+            Insurance Phone
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="insurancePhone"
+            type="text"
+            placeholder="Insurance Phone"
+          />
+        </div>
+
+        <div>
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="insuranceEmail">
+            Insurance Email
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="insuranceEmail"
+            type="text"
+            placeholder="Insurance Email"
+          />
+        </div>
+      </div>
+      
+      <button className="w-full mt-8 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+      > Update </button>
+
       </form>
     </div>
 
