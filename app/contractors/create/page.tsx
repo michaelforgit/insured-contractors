@@ -116,6 +116,7 @@ const contractorServices = [
   "Sawing",
   "Reshape",
   "Tile",
+  "Roadside Assistance"
 ];
 
 type contractorInformation = {
