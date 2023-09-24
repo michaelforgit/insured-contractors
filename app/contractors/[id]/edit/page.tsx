@@ -78,7 +78,7 @@ export default function Edit() {
     };
 
     // Update the MongoDB database using a PUT request
-    fetch(`contractors/api/${id}`, {
+    fetch(``, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
