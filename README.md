@@ -42,9 +42,8 @@ GIF created with Lice Cap
 
 Describe any challenges encountered while building the app.
 
-The logo image keeps broken but aside that everything is done well.
-Of course I plan to work on it more to make it scalable and more user oriented
 
+## Next
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
