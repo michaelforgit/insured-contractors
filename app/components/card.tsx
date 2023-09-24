@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Tag from './tag'
+import Popover from './popover'
 
 type Props = {
     id: string;
@@ -16,6 +17,7 @@ type Props = {
     insurancePhone: string;
     insuranceEmail: string;
 }
+
 
 export default function Card( {id, company, locationId, email, phoneNumber, city, state, zip, insuranceName, insurancePhone, insuranceEmail}: Props) {
     
@@ -51,7 +53,7 @@ export default function Card( {id, company, locationId, email, phoneNumber, city
     
     return(
         <>
-                <div className="col-span-3 md:col-span-1 rounded-md pb-3 space-y-2 bg-white">
+                <div className="col-span-3 md:col-span-1 rounded-md pb-3 space-y-2 bg-white ">
                     <img src="/deckimage.jpg" alt="Deck Image" className="w-full object-cover rounded-md" />
                     <div className="px-3 space-y-2">
                         <div className="flex flex-wrap justify-start">
