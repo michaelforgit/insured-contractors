@@ -27,6 +27,7 @@ export async function PUT(request: Request, context: { params: any }) {
     const contractor = await db.collection("contractors").updateOne({ _id: new ObjectId(id) }, { $set: requestBody });
     return NextResponse.json("hello");
 
+
   } catch (error) {
     console.log(error);
     return NextResponse.json({ message: "Error..." });
