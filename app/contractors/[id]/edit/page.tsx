@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, use } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { ObjectId } from 'mongodb';
 
@@ -61,7 +61,33 @@ export default function Edit() {
     }
   }, [id]);
 
- 
+  //update the mongodb database using the put request
+  useEffect(() => {
+    if (id) {
+      const formData = {
+        company: companyValue,
+        locationId: locationIdValue,
+        email: emailValue,
+        phoneNumber: phoneNumberValue,
+        city: cityValue,
+        state: stateValue,
+        zip: zipValue,
+        insuranceName: insuranceNameValue,
+        insurancePhone: insurancePhoneValue,
+        insuranceEmail: insuranceEmailValue,
+      };
+
+      const response = fetch(`../api/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+    }
+  }, [companyValue, locationIdValue, emailValue, phoneNumberValue, cityValue, stateValue, zipValue, insuranceNameValue, insurancePhoneValue, insuranceEmailValue]);
+
+
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
@@ -86,7 +112,16 @@ export default function Edit() {
       },
       body: JSON.stringify(formData),
     });
-    //router.push('/');
+
+    const client = fetch(`contractors/api/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+
+    router.push('/');
   };
 
   return (
