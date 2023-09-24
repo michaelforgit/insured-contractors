@@ -42,7 +42,7 @@ export default function Card( {id, company, locationId, email, phoneNumber, city
                 const data = await response.json();
         
                 console.log('Data:', data?.rating);
-                setRating(data?.rating || Math.floor(Math.random() * 5) + 1)
+                setRating(Math.floor(data?.rating) || Math.floor(Math.random() * 5) + 1)
               } catch (error) {
                 console.error('Error fetching data:', error);
               }
