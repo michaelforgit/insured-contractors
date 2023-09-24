@@ -64,7 +64,7 @@ export default async function Home() {
         </form>
         <div>
           <a href="contractors/create">
-            <button  className="fixed right-5 bottom-5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"><div className="flex flex-row gap-2 items-center"><p className="lg:text-lg">Post</p><FaPlusSquare className="w-5 h-5"/></div></button>
+            <button  className="fixed right-5 bottom-5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 z-50"><div className="flex flex-row gap-2 items-center"><p className="lg:text-lg">Post</p><FaPlusSquare className="w-5 h-5"/></div></button>
           </a>
         </div>
       </div>
