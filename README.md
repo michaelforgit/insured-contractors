@@ -1,4 +1,4 @@
-# Insured COntractors
+# Insured Contractors
 
 Submitted by: **Micheal O`Gorman, Marnath Deng, Beteab Tefera, Dan Beletsky**
 
