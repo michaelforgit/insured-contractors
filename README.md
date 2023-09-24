@@ -16,6 +16,7 @@ Our Interface is designed with simplicity and ease of use. The intuitive feature
 - **Post Your Services**: If you are a contractor You can post your services, your company information, insurance coverage, etc. 
 ## Technologies We Use
 Behind the scenes, we leverage cutting-edge technologies to make your experience seamless and secure:
+- Google Business API: Used to update contractor information in real time.
 - MongoDB: We store our contractor data securely and efficiently using MongoDB, ensuring fast and reliable access to information.
 - Node.js: Our backend is powered by Node.js, providing a robust and scalable foundation for our platform.
 - Next.js: We use Next.js for our frontend, delivering a smooth and responsive user experience.
