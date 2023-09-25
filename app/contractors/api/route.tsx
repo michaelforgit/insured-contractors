@@ -30,3 +30,31 @@ export async function POST(request: Request) {
     return NextResponse.json( { message: "Error..." } )
   }
 }
+
+export async function GET(request: Request) {
+  try {
+    const client = await clientPromise;
+    const db = await client.db("insured-contractors");
+    const contractorsReq = await db.collection('contractors').find({}).toArray();
+    
+    let contractors = contractorsReq.map( (contractor) => ( {
+      id: contractor._id.toString(),
+      company: contractor.company,
+      locationId: contractor.locationId,
+      email: contractor.email,
+      phoneNumber: contractor.phoneNumber,
+      city: contractor.city,  
+      state: contractor.state,
+      zip: contractor.zip, 
+      insuranceName: contractor.insuranceName,
+      insurancePhone: contractor.insurancePhone,
+      insuranceEmail: contractor.insuranceEmail,
+      jobs: contractor.jobs,
+      imageUrl: contractor.imageUrl
+    } ) )
+
+    return NextResponse.json({ contractors: contractors });
+  } catch (error) {
+    console.log(error)
+  }
+}

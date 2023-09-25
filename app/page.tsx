@@ -20,34 +20,19 @@ type contractorInformation = {
 }
 
 export default async function Home() {
-  
-  let contractors: contractorInformation[] = []
 
-  try {
-    const client = await clientPromise;
-    const db = await client.db("insured-contractors");
-    const contractorsReq = await db.collection('contractors').find({}).toArray();
-    contractors = contractorsReq.map( (contractor) => ( {
-      id: contractor._id.toString(),
-      company: contractor.company,
-      locationId: contractor.locationId,
-      email: contractor.email,
-      phoneNumber: contractor.phoneNumber,
-      city: contractor.city,  
-      state: contractor.state,
-      zip: contractor.zip, 
-      insuranceName: contractor.insuranceName,
-      insurancePhone: contractor.insurancePhone,
-      insuranceEmail: contractor.insuranceEmail,
-      jobs: contractor.jobs,
-      imageUrl: contractor.imageUrl
-    } ) )
-  } catch (error) {
-    console.log(error)
-  }
+  const { contractors } = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/contractors/api`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  }).then( async (data) => {
+    return await data.json();
+  } )
+
   return (
-    <main className="flex min-h-screen bg-[#f2f2f7]">
-      <div className="w-full justify-center p-8 lg:px-48 mb-20">
+    <main className="flex min-h-screen bg-[#f2f2f7] justify-center">
+      <div className="w-full justify-center p-8 lg:px-48 mb-20 max-w-[1800px]">
       <div className="grid grid-cols-2 justify-items-center">
         <img src="InsuredContractors.png" className="col-span-2 lg:top-5 lg:left-5 lg:absolute h-16"/>
         <form className="col-span-2 mx-auto grid mb-6 mt-6 lg:mt-0 w-full md:w-3/5">
@@ -70,7 +55,7 @@ export default async function Home() {
       </div>
 
         <div className="grid grid-cols-3 gap-4">
-          { contractors.map( (contractor) => (
+          { contractors.map( (contractor : any) => (
             <Card key = {contractor.id} id = {contractor.id} company = {contractor.company} locationId = {contractor.locationId} email = {contractor.email} phoneNumber = {contractor.phoneNumber} city = {contractor.city} state = {contractor.state} zip = {contractor.zip} insuranceName = {contractor.insuranceName} insurancePhone = {contractor.insurancePhone} insuranceEmail = {contractor.insuranceEmail} jobs = {contractor.jobs} imageUrl = {contractor.imageUrl}  />
           ) ) }
         </div>

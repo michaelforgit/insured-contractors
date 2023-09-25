@@ -119,19 +119,6 @@ const contractorServices = [
   "Roadside Assistance"
 ];
 
-type contractorInformation = {
-  company: string;
-  locationId: string;
-  email: string;
-  phoneNumber: string;
-  city: string;
-  state: string;
-  zip: string;
-  insuranceName: string;
-  insurancePhone: string;
-  insuranceEmail: string;
-}
-
 export default function Create() {
 
   const [companyValue, setCompanyValue] = useState("Default");
@@ -167,7 +154,7 @@ export default function Create() {
     };
 
     const response = fetch('api', {
-      method: 'POST',
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -312,9 +299,6 @@ export default function Create() {
           <button className="w-150 mt-8 px-4 py-2 bg-gray-400 text-white rounded-md hover:bg-red-500" value="Cancel">Back</button>
           <button className="w-120 mt-8 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600" value="Submit">Submit </button>
         </div>
-
-
-        
       </form>
     </div>
   );
