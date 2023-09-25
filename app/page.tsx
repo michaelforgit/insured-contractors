@@ -25,6 +25,7 @@ export default async function Home() {
     headers: {
       'Content-Type': 'application/json'
     },
+    cache: 'no-cache',
   }).then( async (data) => {
     return await data.json();
   } ). catch( (error) => {
