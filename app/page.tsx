@@ -27,7 +27,10 @@ export default async function Home() {
     },
   }).then( async (data) => {
     return await data.json();
-  } )
+  } ). catch( (error) => {
+    console.log(error);
+    return { contractors: [] };
+  } );
 
   return (
     <main className="flex min-h-screen bg-[#f2f2f7] justify-center">
