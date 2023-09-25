@@ -154,7 +154,7 @@ export default function Create() {
     };
 
     const response = fetch('api', {
-      method: 'GET',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
