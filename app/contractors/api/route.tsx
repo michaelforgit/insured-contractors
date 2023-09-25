@@ -39,6 +39,6 @@ export async function GET(request: Request) {
 
     return NextResponse.json({ contractors: contractorsReq });
   } catch (error) {
-    console.log(error)
+    return NextResponse.json({ message: "Error..." });
   }
 }
