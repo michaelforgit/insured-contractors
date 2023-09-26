@@ -59,7 +59,7 @@ export default async function Home() {
 
         <div className="grid grid-cols-3 gap-4">
           { contractors.map( (contractor : any) => (
-            <Card key = {contractor.id} id = {contractor.id} company = {contractor.company} locationId = {contractor.locationId} email = {contractor.email} phoneNumber = {contractor.phoneNumber} city = {contractor.city} state = {contractor.state} zip = {contractor.zip} insuranceName = {contractor.insuranceName} insurancePhone = {contractor.insurancePhone} insuranceEmail = {contractor.insuranceEmail} jobs = {contractor.jobs} imageUrl = {contractor.imageUrl}  />
+            <Card key = {contractor._id} id = {contractor._id} company = {contractor.company} locationId = {contractor.locationId} email = {contractor.email} phoneNumber = {contractor.phoneNumber} city = {contractor.city} state = {contractor.state} zip = {contractor.zip} insuranceName = {contractor.insuranceName} insurancePhone = {contractor.insurancePhone} insuranceEmail = {contractor.insuranceEmail} jobs = {contractor.jobs} imageUrl = {contractor.imageUrl}  />
           ) ) }
         </div>
       </div>
