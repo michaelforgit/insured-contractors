@@ -25,7 +25,6 @@ import { useEffect, useState } from 'react';
 
 export default function Home() {
   const searchParams = useSearchParams();
-  const params = new URLSearchParams(searchParams.toString());
   const pathname = usePathname();
   const { replace } = useRouter();
   const [contractors, setContractors] = useState<contractorInformation[]>([]);
@@ -34,6 +33,7 @@ export default function Home() {
     event.preventDefault();
     const searchInput = document.getElementById('default-search') as HTMLInputElement;
     const searchValue = searchInput ? searchInput.value : '';
+    const params = new URLSearchParams(searchParams.toString());
     if (searchValue) {
       params.set('filter', searchValue)
     } else {
@@ -43,6 +43,7 @@ export default function Home() {
   }
 
   useEffect(() => {
+    const params = new URLSearchParams(searchParams.toString());
     const filter = params.get('filter') ? `?filter=${params.get('filter')}` : '';
     fetch(`/contractors/api${filter}`, {
       method: 'GET',
@@ -57,7 +58,7 @@ export default function Home() {
       console.log(error);
       setContractors([]);
     });
-  }, [params, pathname]);
+  }, [searchParams, pathname]);
 
   return (
     <main className="flex min-h-screen bg-[#f2f2f7] justify-center">
