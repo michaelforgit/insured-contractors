@@ -21,11 +21,14 @@ type contractorInformation = {
   imageUrl: string;
 }
 
-export default async function Home() {
+import { useEffect, useState } from 'react';
+
+export default function Home() {
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams.toString());
   const pathname = usePathname();
   const { replace } = useRouter();
+  const [contractors, setContractors] = useState<contractorInformation[]>([]);
 
   function handleSearch(event: any) {
     event.preventDefault();
@@ -39,19 +42,22 @@ export default async function Home() {
     replace(`${pathname}?${params.toString()}`);
   }
 
-  const filter = params.get('filter') ? `?filter=${params.get('filter')}` : '';
-  const { contractors } = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/contractors/api${filter}`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    cache: 'no-cache',
-  }).then( async (data) => {
-    return await data.json();
-  } ). catch( (error) => {
-    console.log(error);
-    return { contractors: [] };
-  } );
+  useEffect(() => {
+    const filter = params.get('filter') ? `?filter=${params.get('filter')}` : '';
+    fetch(`/contractors/api${filter}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      cache: 'no-cache',
+    }).then(async (data) => {
+      const result = await data.json();
+      setContractors(result.contractors);
+    }).catch((error) => {
+      console.log(error);
+      setContractors([]);
+    });
+  }, [params, pathname]);
 
   return (
     <main className="flex min-h-screen bg-[#f2f2f7] justify-center">
@@ -78,8 +84,8 @@ export default async function Home() {
       </div>
 
         <div className="grid grid-cols-3 gap-4">
-          { contractors.map( (contractor : any) => (
-            <Card key = {contractor._id} id = {contractor._id} company = {contractor.company} locationId = {contractor.locationId} email = {contractor.email} phoneNumber = {contractor.phoneNumber} city = {contractor.city} state = {contractor.state} zip = {contractor.zip} insuranceName = {contractor.insuranceName} insurancePhone = {contractor.insurancePhone} insuranceEmail = {contractor.insuranceEmail} jobs = {contractor.jobs} imageUrl = {contractor.imageUrl}  />
+          { contractors.map( (contractor : contractorInformation) => (
+            <Card key = {contractor.id} id = {contractor.id} company = {contractor.company} locationId = {contractor.locationId} email = {contractor.email} phoneNumber = {contractor.phoneNumber} city = {contractor.city} state = {contractor.state} zip = {contractor.zip} insuranceName = {contractor.insuranceName} insurancePhone = {contractor.insurancePhone} insuranceEmail = {contractor.insuranceEmail} jobs = {contractor.jobs} imageUrl = {contractor.imageUrl}  />
           ) ) }
         </div>
       </div>
