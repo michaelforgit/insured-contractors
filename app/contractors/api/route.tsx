@@ -32,10 +32,13 @@ export async function POST(request: Request) {
 }
 
 export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const filter = searchParams.get("filter");
+  const query = filter ? { company: { $regex: filter, $options: "i" } } : {};
   try {
     const client = await clientPromise;
     const db = await client.db("insured-contractors");
-    const contractorsReq = await db.collection('contractors').find({}).toArray();
+    const contractorsReq = await db.collection('contractors').find(query).toArray();
 
     return NextResponse.json({ contractors: contractorsReq });
   } catch (error) {
